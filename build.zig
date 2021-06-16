@@ -12,6 +12,10 @@ pub fn build(b: *std.build.Builder) void {
     const mode = b.standardReleaseOptions();
 
     const exe = b.addExecutable("zigfer", "src/main.zig");
+    exe.addPackage(.{
+        .name = "requestz",
+        .path = "libs/requestz/src/main.zig",
+    });
     exe.setTarget(target);
     exe.setBuildMode(mode);
     exe.install();
